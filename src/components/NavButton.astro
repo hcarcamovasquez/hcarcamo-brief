@@ -1,0 +1,28 @@
+---
+
+interface Props {
+    className?: string;
+    redirect?: string;
+    variant: 'link' | 'button';
+}
+
+const {className = 'text-gray-700', variant, redirect} = Astro.props;
+
+---
+{
+    variant === 'button'  ?
+        <button id="btn-nav" class:list={[ className, 'px-2 py-2']}>
+             <slot/>
+        </button> : 
+        <a  class:list={[className, 'px-2 py-2']} href={redirect}>
+           <slot/>
+        </a>
+}
+
+<script>
+    const btn = document.getElementById("btn-nav") as HTMLButtonElement;
+    btn.addEventListener('click',()=> {
+        console.log("click");
+    })
+</script>
+

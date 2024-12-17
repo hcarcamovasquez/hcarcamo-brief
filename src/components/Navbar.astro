@@ -1,0 +1,38 @@
+---
+import Logo from "../assets/logo.svg";
+import NavButton from "./NavButton.astro";
+
+const menus = [
+    { label: "Inicio", redirect : "/"},
+    { label: "Sobre mi", redirect : "/sobre-mi"},
+    { label: "Mis Proyectos", redirect: "mis-proyecto"},
+    { label: "Mi experiencia", redirect:'mi-experiencia'},
+]
+---
+
+<nav class="fixed w-full flex items-center justify-between border-b-2 h-16 py-2 px-20">
+
+    <img src={Logo.src}   alt="Logo de mi portafilio">
+
+    <ul class="flex item-center grap-2">
+    {
+       menus.map(m => 
+        <li class="mx-2">
+            <NavButton variant="link" redirect={m.redirect}>
+                <span>{m.label}</span>
+            </NavButton>
+        </li>
+       ) 
+    }
+
+    </ul>
+
+    <ul>
+        <li>
+            <NavButton  variant="button"
+            className={"rounded-md bg-orange-600 text-white"}>
+                <span>Destacados</span>
+            </NavButton>
+        </li>
+     </ul>
+</nav>
